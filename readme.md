@@ -1,9 +1,12 @@
-Casos de Uso (Tomás):
-- Registar o peso e medidas corporais.
+MyBodyFitness
+
+A app é suposto permitir que uma pessoa que faz musculação permitir registir os seus treinos , os seus pesos e os seus progressos 
+
+Luis Pampihosa
+Rodrigo Lopes
+Tomas Silva
+
 - Criar um plano de treino.
-- Partilhar o próprio plano de treino 
-- Seguir um plano de treino de outro utilizador.
-- Registar um treino (séries, repetições e volumes).
 - Consultar o histórico de treinos
-- Consultar o histórico de progressão de peso e medidas corporais.
 - Consultar recordes de carga levantada.
+
