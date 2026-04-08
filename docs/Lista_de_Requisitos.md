@@ -19,5 +19,6 @@ Lista de Requisitos:
     - Criar um plano de treino ginásio com os exercícios disponívéis. Depois em cada ginásio se não existir a máquina ou material do exercício do treino, então há sugestões de exercicios semelhantes que existam nesse ginásio. 
     - Funcionalidade de partilha e importação de planos de treino entre clientes.
     - Seguir outro plano de treino de outro utilizador.
+    - Ver histórico de progressão de outro utilizador, com permissão.
     - Ver num gráfico a progressão de cargas, mediçoes e peso corporal.
     - Ver num calendário o registo de treinos feitos. 
