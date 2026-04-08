@@ -1,7 +1,7 @@
 Lista de Requisitos:
 
     Admnistrador Geral:
-    - Trata da manutenção da app (atualizações de software)
+    - Trata da manutenção da app (atualizações de software).
     - Trata da ligação entre os vários ginásios e app.
 
 

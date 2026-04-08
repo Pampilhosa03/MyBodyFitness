@@ -1,7 +1,11 @@
-Ginásio: Tem uma lista de Equipamento.
+Utilizador → tem Medidas, Peso, Treinos realizados, Ginásios preferidos
 
-Equipamento: Condiciona a disponibilidade de certos Exercicios.
+Plano de Treino → tem Exercícios
 
-Plano de Treino: Composto por Exercicios. Se o Ginasio atual não tem o Equipamento, o sistema procura Exercicios com a mesma etiqueta de "Grupo Muscular".
+Sessão de Treino → baseada num Plano, tem Séries
 
-Cliente: Possui Historico de Peso, Medidas, Treinos e Lista de Preferencias de Ginasios.
+Série → tem carga, repetições, exercício
+
+Exercício → tem Grupo Muscular, precisa de Equipamento
+
+Ginásio → tem Equipamento, tem Admin Local
