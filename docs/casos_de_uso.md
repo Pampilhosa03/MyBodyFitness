@@ -12,7 +12,7 @@
 
 **Fluxo Principal:**
 1. O utilizador navega para a secção "Medidas".
-2. O sistema apresenta o formulário de registo com os campos: peso (kg), altura (cm), peito (cm), cintura (cm) e anca (cm).
+2. O sistema apresenta o formulário de registo com os campos: peso (kg), altura (cm), peito (cm), cintura (cm).
 3. O utilizador preenche os campos pretendidos e confirma.
 4. O sistema valida os valores introduzidos (devem ser numéricos e positivos).
 5. O sistema calcula automaticamente o IMC com base no peso e altura.
