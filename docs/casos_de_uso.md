@@ -1,4 +1,5 @@
 # Casos de Uso — MyBodyFitness
+*(Metodologia ICONIX)*
 
 ---
 
@@ -10,245 +11,321 @@
 | **Administrador Local** | Gestor de um ginásio parceiro; gere o catálogo de exercícios e consulta estatísticas locais. |
 | **Cliente** | Utilizador autenticado que utiliza a app para treinar, registar progresso e explorar planos. |
 
-> **Nota:** Autenticação e gestão de ginásios preferidos são pré-condições dos casos de uso, não casos de uso independentes.
-
 ---
 
 ## 1. Administrador Geral
 
+---
+
 ### UC01 — Gerir Atualizações do Sistema
 
-**Ator:** Administrador Geral
+**Ator Primário:** Administrador Geral
+
+**Descrição Breve:** O administrador revê e aplica atualizações de software à plataforma.
+
 **Pré-condições:** O administrador está autenticado com permissões de sistema.
 
-**Fluxo Principal:**
-1. O administrador acede ao painel de administração e navega para "Atualizações".
-2. O sistema apresenta a versão atual e eventuais atualizações pendentes.
-3. O administrador revê as notas de versão e confirma a aplicação da atualização.
-4. O sistema coloca a plataforma em modo de manutenção e aplica a atualização.
-5. O sistema reinicia os serviços necessários e regista a operação no log.
-6. O sistema confirma o sucesso da atualização e apresenta a nova versão ativa.
-
-**Fluxos Alternativos:**
-- **4a.** Se a atualização falhar, o sistema reverte para a versão anterior e notifica o administrador com o erro.
-
 **Pós-condições:** A plataforma corre a nova versão e o evento fica registado no histórico.
+
+**Fluxo Principal:**
+
+| # | Ator | Sistema |
+|---|------|---------|
+| 1 | Navega para "Atualizações" no painel de administração. | |
+| 2 | | Apresenta a versão atual e as atualizações pendentes. |
+| 3 | Revê as notas de versão e confirma a aplicação da atualização. | |
+| 4 | | Coloca a plataforma em modo de manutenção e aplica a atualização. |
+| 5 | | Reinicia os serviços necessários e regista a operação no log. |
+| 6 | | Apresenta confirmação de sucesso com a nova versão ativa. |
+
+**Cursos Alternativos:**
+- **A1 (passo 4):** Se a atualização falhar, o sistema reverte para a versão anterior e notifica o administrador com a descrição do erro.
 
 ---
 
 ### UC02 — Gerir Integração de Ginásios
 
-**Ator:** Administrador Geral
+**Ator Primário:** Administrador Geral
+
+**Descrição Breve:** O administrador integra um novo ginásio parceiro na plataforma ou desativa um existente.
+
 **Pré-condições:** O administrador está autenticado. Existe um pedido de parceria de um ginásio.
 
+**Pós-condições:** O ginásio fica registado na plataforma e o seu Administrador Local tem acesso ao painel de gestão.
+
 **Fluxo Principal:**
-1. O administrador acede a "Ginásios Parceiros" e seleciona "Novo ginásio".
-2. O sistema apresenta o formulário de integração: nome, morada, contacto e catálogo inicial de equipamentos.
-3. O administrador preenche os dados e confirma.
-4. O sistema valida os dados e cria o perfil do ginásio na plataforma.
-5. O sistema gera credenciais para o Administrador Local do ginásio e envia por e-mail.
-6. O ginásio fica ativo e visível para os clientes.
 
-**Fluxos Alternativos:**
-- **3a.** Se dados obrigatórios estiverem em falta, o sistema assinala os campos e não cria o perfil.
-- **6a.** O administrador pode desativar um ginásio existente, tornando-o invisível para os clientes sem apagar os dados.
+| # | Ator | Sistema |
+|---|------|---------|
+| 1 | Acede a "Ginásios Parceiros" e seleciona "Novo ginásio". | |
+| 2 | | Apresenta o formulário de integração: nome, morada, contacto e catálogo inicial de equipamentos. |
+| 3 | Preenche os dados e confirma. | |
+| 4 | | Valida os dados e cria o perfil do Ginásio na plataforma. |
+| 5 | | Gera credenciais para o Administrador Local e envia por e-mail. |
+| 6 | | Ativa o ginásio e torna-o visível para os clientes. |
 
-**Pós-condições:** O ginásio fica registado na plataforma e o seu administrador local tem acesso ao painel de gestão.
+**Cursos Alternativos:**
+- **A1 (passo 3):** Se dados obrigatórios estiverem em falta, o sistema assinala os campos inválidos e não cria o perfil.
+- **A2 (passo 1):** O administrador seleciona um ginásio existente e escolhe "Desativar"; o sistema torna-o invisível para os clientes sem apagar os dados.
 
 ---
 
 ## 2. Administrador Local
 
+---
+
 ### UC03 — Gerir Catálogo de Exercícios do Ginásio
 
-**Ator:** Administrador Local
-**Pré-condições:** O administrador local está autenticado no painel do seu ginásio.
+**Ator Primário:** Administrador Local
+
+**Descrição Breve:** O administrador local adiciona, edita ou remove exercícios do catálogo do seu ginásio.
+
+**Pré-condições:** O Administrador Local está autenticado no painel do seu ginásio.
+
+**Pós-condições:** O catálogo do Ginásio fica atualizado e as sugestões automáticas de treino refletem a mudança.
 
 **Fluxo Principal:**
-1. O administrador navega para "Catálogo de Exercícios".
-2. O sistema apresenta a lista de exercícios atualmente disponíveis no ginásio.
-3. O administrador seleciona "Adicionar exercício", escolhe da biblioteca global e confirma.
-4. O sistema associa o exercício ao catálogo do ginásio.
-5. O exercício passa a ser sugerido aos clientes que treinem neste ginásio.
 
-**Fluxos Alternativos:**
-- **3a.** O administrador pode remover um exercício do catálogo (ex: equipamento avariado); o sistema retira-o das sugestões automáticas para esse ginásio.
-- **3b.** O administrador pode editar os detalhes de um exercício existente (ex: número de máquinas disponíveis).
+| # | Ator | Sistema |
+|---|------|---------|
+| 1 | Navega para "Catálogo de Exercícios". | |
+| 2 | | Apresenta a lista de Exercícios atualmente disponíveis no ginásio. |
+| 3 | Seleciona "Adicionar exercício" e escolhe um Exercício da biblioteca global. | |
+| 4 | Confirma a adição. | |
+| 5 | | Associa o Exercício ao catálogo do Ginásio. |
+| 6 | | O exercício passa a ser sugerido aos clientes que treinem neste ginásio. |
 
-**Pós-condições:** O catálogo do ginásio fica atualizado e as adaptações automáticas de treino refletem a mudança.
+**Cursos Alternativos:**
+- **A1 (passo 3):** O administrador seleciona "Remover exercício" (ex.: equipamento avariado); o sistema retira-o das sugestões automáticas para esse ginásio.
+- **A2 (passo 3):** O administrador seleciona "Editar exercício" e altera os detalhes (ex.: número de máquinas disponíveis); o sistema guarda as alterações.
 
 ---
 
 ### UC04 — Consultar Estatísticas de Utilização
 
-**Ator:** Administrador Local
-**Pré-condições:** O administrador local está autenticado. Existem sessões de treino registadas no ginásio.
+**Ator Primário:** Administrador Local
 
-**Fluxo Principal:**
-1. O administrador navega para "Estatísticas".
-2. O sistema apresenta um dashboard com: número de treinos realizados no ginásio, exercícios mais utilizados e horários de maior afluência.
-3. O administrador pode filtrar por intervalo de datas.
-4. O sistema atualiza os gráficos de acordo com o filtro aplicado.
+**Descrição Breve:** O administrador local consulta o dashboard de estatísticas de utilização do seu ginásio.
 
-**Fluxos Alternativos:**
-- **2a.** Se ainda não houver dados suficientes, o sistema apresenta uma mensagem informativa.
+**Pré-condições:** O Administrador Local está autenticado. Existem SessõesDeTreino registadas no ginásio.
 
 **Pós-condições:** Nenhuma alteração ao estado do sistema.
+
+**Fluxo Principal:**
+
+| # | Ator | Sistema |
+|---|------|---------|
+| 1 | Navega para "Estatísticas". | |
+| 2 | | Apresenta um dashboard com: número de treinos realizados, exercícios mais utilizados e horários de maior afluência. |
+| 3 | Define um intervalo de datas e aplica o filtro. | |
+| 4 | | Atualiza os gráficos de acordo com o filtro aplicado. |
+
+**Cursos Alternativos:**
+- **A1 (passo 2):** Se não existirem dados suficientes, o sistema apresenta uma mensagem informativa.
 
 ---
 
 ## 3. Cliente
 
+---
+
 ### UC05 — Gerir Perfil Biométrico
 
-**Ator:** Cliente
-**Pré-condições:** O utilizador está autenticado na aplicação.
+**Ator Primário:** Cliente
+
+**Descrição Breve:** O cliente regista as suas medidas corporais e peso, e consulta o respetivo histórico.
+
+**Pré-condições:** O Cliente está autenticado na aplicação.
+
+**Pós-condições:** O novo registo de Medida fica associado ao utilizador com a data atual.
 
 **Fluxo Principal:**
-1. O utilizador navega para a secção "Medidas".
-2. O sistema apresenta o formulário de registo com os campos: peso (kg), altura (cm), peito (cm), cintura (cm).
-3. O utilizador preenche os campos pretendidos e confirma.
-4. O sistema valida os valores introduzidos (devem ser numéricos e positivos).
-5. O sistema calcula automaticamente o IMC com base no peso e altura.
-6. O sistema guarda o registo com a data e hora atual.
-7. O sistema apresenta uma mensagem de sucesso e atualiza o histórico de medidas.
 
-**Fluxos Alternativos:**
-- **4a.** Se algum valor for inválido (negativo, não numérico), o sistema assinala o campo com erro e não guarda o registo.
-- **3a.** O utilizador pode preencher apenas o peso, sem as restantes medidas.
+| # | Ator | Sistema |
+|---|------|---------|
+| 1 | Navega para a secção "Medidas". | |
+| 2 | | Apresenta o formulário com os campos: peso (kg), altura (cm), peito (cm), cintura (cm). |
+| 3 | Preenche os campos pretendidos e confirma. | |
+| 4 | | Valida os valores introduzidos (devem ser numéricos e positivos). |
+| 5 | | Calcula automaticamente o IMC com base no peso e na altura. |
+| 6 | | Guarda a Medida com a data e hora atual. |
+| 7 | | Apresenta mensagem de sucesso e atualiza o histórico de medidas. |
 
-**Pós-condições:** O novo registo de medidas fica associado ao utilizador com a data atual.
+**Cursos Alternativos:**
+- **A1 (passo 4):** Se algum valor for inválido (negativo ou não numérico), o sistema assinala o campo com erro e não guarda o registo.
+- **A2 (passo 3):** O cliente pode preencher apenas o peso, sem as restantes medidas.
 
 ---
 
 ### UC06 — Criar Plano de Treino
 
-**Ator:** Cliente
-**Pré-condições:** O utilizador está autenticado. Existem exercícios disponíveis no sistema.
+**Ator Primário:** Cliente
+
+**Descrição Breve:** O cliente cria um novo PlanoDeTreino, selecionando exercícios e definindo séries.
+
+**Pré-condições:** O Cliente está autenticado. Existem Exercícios disponíveis no sistema.
+
+**Pós-condições:** O PlanoDeTreino fica guardado e associado ao utilizador criador.
 
 **Fluxo Principal:**
-1. O utilizador navega para "Planos de Treino" e seleciona "Criar novo plano".
-2. O sistema apresenta um formulário com campos: nome do plano, descrição e visibilidade (público/privado).
-3. O utilizador preenche o nome e clica em "Adicionar exercício".
-4. O sistema apresenta a lista de exercícios disponíveis, com filtro por grupo muscular.
-5. O utilizador seleciona um exercício e define o número de séries planeadas.
-6. O sistema adiciona o exercício ao plano. Os passos 3–5 repetem-se para cada exercício.
-7. O utilizador clica em "Guardar plano".
-8. O sistema valida que o plano tem pelo menos um exercício e guarda.
-9. O sistema confirma a criação e redireciona para a página do plano.
 
-**Fluxos Alternativos:**
-- **7a.** Se o plano estiver vazio (sem exercícios), o sistema apresenta mensagem de erro e não guarda.
-- **4a.** Se não existirem exercícios disponíveis, o sistema informa o utilizador.
+| # | Ator | Sistema |
+|---|------|---------|
+| 1 | Navega para "Planos de Treino" e seleciona "Criar novo plano". | |
+| 2 | | Apresenta o formulário: nome do plano, descrição e visibilidade (público/privado). |
+| 3 | Preenche o nome e clica em "Adicionar exercício". | |
+| 4 | | Apresenta a lista de Exercícios disponíveis com filtro por grupo muscular. |
+| 5 | Seleciona um Exercício e define o número de séries planeadas. | |
+| 6 | | Adiciona o Exercício ao PlanoDeTreino. |
+| 7 | Repete os passos 3–6 para cada exercício desejado e clica em "Guardar plano". | |
+| 8 | | Valida que o plano tem pelo menos um Exercício e guarda o PlanoDeTreino. |
+| 9 | | Confirma a criação e redireciona para a página do plano. |
 
-**Pós-condições:** O plano de treino fica guardado e associado ao utilizador criador.
+**Cursos Alternativos:**
+- **A1 (passo 8):** Se o plano não tiver exercícios, o sistema apresenta mensagem de erro e não guarda.
+- **A2 (passo 4):** Se não existirem exercícios disponíveis, o sistema informa o utilizador.
 
 ---
 
 ### UC07 — Iniciar Treino com Adaptação de Local
 
-**Ator:** Cliente
-**Pré-condições:** O utilizador está autenticado e tem pelo menos um plano de treino.
+**Ator Primário:** Cliente
+
+**Descrição Breve:** O cliente inicia uma SessaoDeTreino com base num PlanoDeTreino, com adaptação automática ao ginásio escolhido.
+
+**Pré-condições:** O Cliente está autenticado e tem pelo menos um PlanoDeTreino criado.
+
+**Pós-condições:** A SessaoDeTreino fica registada no histórico do utilizador com todas as Séries, cargas e repetições.
 
 **Fluxo Principal:**
-1. O utilizador navega para "Iniciar Treino".
-2. O sistema apresenta a lista de planos de treino do utilizador e pede para escolher o ginásio (da lista de preferidos ou novo).
-3. O utilizador seleciona o plano e o ginásio onde vai treinar.
-4. O sistema verifica quais os exercícios do plano cujo equipamento está disponível no ginásio selecionado.
-5. Para exercícios sem equipamento disponível, o sistema sugere automaticamente exercícios alternativos que trabalham o mesmo grupo muscular.
-6. O sistema apresenta o plano adaptado ao ginásio, exercício a exercício.
-7. Para cada exercício, o utilizador regista: número de séries, carga (kg) e repetições por série.
-8. O sistema guarda cada série à medida que é confirmada.
-9. O utilizador conclui o treino clicando em "Terminar treino".
-10. O sistema guarda a sessão de treino com data, duração e ginásio.
-11. O sistema apresenta um resumo do treino realizado.
 
-**Fluxos Alternativos:**
-- **3a.** Se o utilizador quiser adicionar um ginásio novo, introduz o nome e pode guardá-lo nas preferências.
-- **7a.** O utilizador pode saltar um exercício sem registar séries.
-- **9a.** Se o utilizador fechar a app durante o treino, o sistema guarda o progresso parcial e permite retomar.
+| # | Ator | Sistema |
+|---|------|---------|
+| 1 | Navega para "Iniciar Treino". | |
+| 2 | | Apresenta a lista de PlanosDeTreino do utilizador e solicita a escolha do Ginásio. |
+| 3 | Seleciona o PlanoDeTreino e o Ginásio onde vai treinar. | |
+| 4 | | Verifica quais os Exercícios do plano cujo Equipamento está disponível no Ginásio selecionado. |
+| 5 | | Para exercícios sem Equipamento disponível, sugere Exercícios alternativos do mesmo grupo muscular. |
+| 6 | | Apresenta o plano adaptado ao Ginásio, exercício a exercício. |
+| 7 | Para cada Exercício, regista número de séries, carga (kg) e repetições. | |
+| 8 | | Guarda cada Série à medida que é confirmada. |
+| 9 | Clica em "Terminar treino". | |
+| 10 | | Guarda a SessaoDeTreino com data, duração e Ginásio. |
+| 11 | | Apresenta o resumo do treino realizado. |
 
-**Pós-condições:** A sessão de treino fica registada no histórico do utilizador, com todas as séries, cargas e repetições.
+**Cursos Alternativos:**
+- **A1 (passo 3):** O cliente escolhe "Adicionar ginásio"; o sistema permite introduzir um novo Ginásio e guardá-lo nas preferências.
+- **A2 (passo 7):** O cliente salta um exercício sem registar séries; o sistema avança para o próximo.
+- **A3 (passo 9):** Se o cliente fechar a app durante o treino, o sistema guarda o progresso parcial e permite retomar a sessão.
 
 ---
 
 ### UC08 — Partilhar / Importar Planos de Treino
 
-**Ator:** Cliente
-**Pré-condições:** O utilizador está autenticado.
+**Ator Primário:** Cliente
+
+**Descrição Breve:** O cliente torna um PlanoDeTreino público para partilha, ou importa um plano público de outro utilizador.
+
+**Pré-condições:** O Cliente está autenticado.
+
+**Pós-condições (Partilhar):** O PlanoDeTreino fica público e visível na pesquisa de outros utilizadores.
+
+**Pós-condições (Importar):** Uma cópia do PlanoDeTreino fica disponível na lista do utilizador importador.
 
 **Fluxo Principal — Partilhar:**
-1. O utilizador acede à página do plano de treino que pretende partilhar.
-2. O utilizador clica em "Tornar público".
-3. O sistema altera a visibilidade do plano para "público".
-4. O sistema confirma a alteração e apresenta um link de partilha.
-5. O plano passa a aparecer na pesquisa pública de outros utilizadores.
+
+| # | Ator | Sistema |
+|---|------|---------|
+| 1 | Acede à página do PlanoDeTreino e clica em "Tornar público". | |
+| 2 | | Altera a visibilidade do PlanoDeTreino para "público". |
+| 3 | | Apresenta confirmação e um link de partilha. |
+| 4 | | O plano passa a aparecer na pesquisa pública. |
 
 **Fluxo Principal — Importar:**
-1. O utilizador navega para "Explorar planos" ou pesquisa por nome/grupo muscular.
-2. O sistema lista os planos públicos de outros utilizadores.
-3. O utilizador seleciona um plano e visualiza os seus detalhes (exercícios, séries, descrição).
-4. O utilizador clica em "Seguir este plano".
-5. O sistema cria uma cópia do plano associada ao utilizador.
-6. O plano passa a aparecer na lista de planos do utilizador.
 
-**Fluxos Alternativos:**
-- **2a (Partilhar).** O utilizador pode reverter clicando em "Tornar privado", tornando o plano invisível para outros.
-- **4a (Importar).** Se o utilizador já segue o plano, o sistema informa que o plano já está na sua lista.
+| # | Ator | Sistema |
+|---|------|---------|
+| 1 | Navega para "Explorar planos" e pesquisa por nome ou grupo muscular. | |
+| 2 | | Lista os PlanosDeTreino públicos de outros utilizadores. |
+| 3 | Seleciona um plano e visualiza os seus detalhes. | |
+| 4 | Clica em "Seguir este plano". | |
+| 5 | | Cria uma cópia do PlanoDeTreino associada ao utilizador. |
+| 6 | | O plano passa a aparecer na lista de PlanosDeTreino do utilizador. |
 
-**Pós-condições:** O plano fica público/privado conforme a escolha, ou a cópia importada fica disponível na lista do utilizador.
+**Cursos Alternativos:**
+- **A1 — Partilhar (passo 1):** O cliente clica em "Tornar privado"; o sistema reverte a visibilidade e o plano deixa de aparecer na pesquisa pública.
+- **A2 — Importar (passo 4):** Se o cliente já segue o plano, o sistema informa que o plano já está na sua lista.
 
 ---
 
 ### UC09 — Analisar Progresso Visual
 
-**Ator:** Cliente
-**Pré-condições:** O utilizador está autenticado e tem pelo menos dois registos de medidas.
+**Ator Primário:** Cliente
 
-**Fluxo Principal:**
-1. O utilizador navega para "Progressão".
-2. O sistema apresenta um gráfico de linha com a evolução do peso ao longo do tempo.
-3. O utilizador pode alternar entre métricas: peso, IMC, peito, cintura, anca.
-4. O sistema atualiza o gráfico de acordo com a métrica selecionada.
-5. O utilizador pode ajustar o intervalo temporal (último mês, 3 meses, 6 meses, 1 ano, tudo).
+**Descrição Breve:** O cliente visualiza gráficos de evolução das suas métricas corporais ao longo do tempo.
 
-**Fluxos Alternativos:**
-- **2a.** Se só existir um registo, o sistema avisa que são necessários pelo menos dois registos para mostrar evolução.
+**Pré-condições:** O Cliente está autenticado e tem pelo menos dois registos de Medida.
 
 **Pós-condições:** Nenhuma alteração ao estado do sistema.
+
+**Fluxo Principal:**
+
+| # | Ator | Sistema |
+|---|------|---------|
+| 1 | Navega para "Progressão". | |
+| 2 | | Apresenta um gráfico de linha com a evolução do peso ao longo do tempo. |
+| 3 | Seleciona uma métrica alternativa (IMC, peito, cintura, anca). | |
+| 4 | | Atualiza o gráfico com a métrica selecionada. |
+| 5 | Ajusta o intervalo temporal (último mês, 3 meses, 6 meses, 1 ano, tudo). | |
+| 6 | | Atualiza o gráfico com o intervalo selecionado. |
+
+**Cursos Alternativos:**
+- **A1 (passo 2):** Se existir apenas um registo de Medida, o sistema avisa que são necessários pelo menos dois registos para mostrar evolução.
 
 ---
 
 ### UC10 — Consultar Calendário de Atividade
 
-**Ator:** Cliente
-**Pré-condições:** O utilizador está autenticado e tem pelo menos uma sessão de treino registada.
+**Ator Primário:** Cliente
 
-**Fluxo Principal:**
-1. O utilizador navega para "Histórico de Treinos".
-2. O sistema apresenta um calendário com os dias em que foram realizados treinos assinalados, e em lista abaixo as sessões mais recentes.
-3. O utilizador seleciona uma sessão no calendário ou na lista.
-4. O sistema apresenta os detalhes: data, ginásio, duração, plano utilizado e todas as séries realizadas (exercício, carga, repetições).
+**Descrição Breve:** O cliente consulta o histórico de SessõesDeTreino num calendário e visualiza os detalhes de cada sessão.
 
-**Fluxos Alternativos:**
-- **2a.** O utilizador pode filtrar por intervalo de datas ou por plano de treino.
+**Pré-condições:** O Cliente está autenticado e tem pelo menos uma SessaoDeTreino registada.
 
 **Pós-condições:** Nenhuma alteração ao estado do sistema.
+
+**Fluxo Principal:**
+
+| # | Ator | Sistema |
+|---|------|---------|
+| 1 | Navega para "Histórico de Treinos". | |
+| 2 | | Apresenta um calendário com os dias de treino assinalados e a lista das sessões mais recentes. |
+| 3 | Seleciona uma sessão no calendário ou na lista. | |
+| 4 | | Apresenta os detalhes: data, Ginásio, duração, PlanoDeTreino utilizado e todas as Séries realizadas. |
+
+**Cursos Alternativos:**
+- **A1 (passo 2):** O cliente aplica um filtro por intervalo de datas ou por PlanoDeTreino; o sistema atualiza o calendário e a lista.
 
 ---
 
 ### UC11 — Consultar Recordes de Carga Levantada
 
-**Ator:** Cliente
-**Pré-condições:** O utilizador está autenticado e tem pelo menos uma sessão de treino registada.
+**Ator Primário:** Cliente
 
-**Fluxo Principal:**
-1. O utilizador navega para "Recordes".
-2. O sistema calcula e apresenta, para cada exercício já realizado, a maior carga registada (1RM) e a data em que foi atingida.
-3. O utilizador pode selecionar um exercício específico para ver a progressão da carga ao longo do tempo num gráfico.
-4. O sistema apresenta o gráfico de evolução da carga máxima para esse exercício.
+**Descrição Breve:** O cliente consulta os seus recordes de carga por exercício e visualiza a progressão ao longo do tempo.
 
-**Fluxos Alternativos:**
-- **2a.** Se o utilizador ainda não tiver séries registadas, o sistema apresenta uma mensagem informativa.
+**Pré-condições:** O Cliente está autenticado e tem pelo menos uma SessaoDeTreino com Séries registadas.
 
 **Pós-condições:** Nenhuma alteração ao estado do sistema.
+
+**Fluxo Principal:**
+
+| # | Ator | Sistema |
+|---|------|---------|
+| 1 | Navega para "Recordes". | |
+| 2 | | Calcula e apresenta, para cada Exercício já realizado, a maior carga registada (1RM) e a data em que foi atingida. |
+| 3 | Seleciona um Exercício específico. | |
+| 4 | | Apresenta o gráfico de evolução da carga máxima ao longo do tempo para esse Exercício. |
+
+**Cursos Alternativos:**
+- **A1 (passo 2):** Se o utilizador ainda não tiver Séries registadas, o sistema apresenta uma mensagem informativa.
