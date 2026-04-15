@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Início — MyBodyFitness</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav th:replace="~{fragments/navbar :: navbar}"></nav>
+
+    <div class="container mt-4">
+        <h1 class="mb-4">
+            Olá, <sec:authentication property="name"/>! 👋
+        </h1>
+
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card text-center h-100 shadow-sm">
+                    <div class="card-body">
+                        <h1 class="display-4">📏</h1>
+                        <h5 class="card-title">Medidas</h5>
+                        <p class="card-text text-muted">Regista o teu peso e medidas corporais.</p>
+                        <a th:href="@{/medidas}" class="btn btn-outline-danger">Ver Medidas</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center h-100 shadow-sm">
+                    <div class="card-body">
+                        <h1 class="display-4">📋</h1>
+                        <h5 class="card-title">Planos de Treino</h5>
+                        <p class="card-text text-muted">Cria e gere os teus planos de treino.</p>
+                        <a th:href="@{/planos}" class="btn btn-outline-danger">Ver Planos</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center h-100 shadow-sm">
+                    <div class="card-body">
+                        <h1 class="display-4">🏋️</h1>
+                        <h5 class="card-title">Iniciar Treino</h5>
+                        <p class="card-text text-muted">Começa uma sessão de treino agora.</p>
+                        <a th:href="@{/treino/iniciar}" class="btn btn-danger">Treinar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
