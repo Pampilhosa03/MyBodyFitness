@@ -12,13 +12,13 @@ Tomas Silva
 
 2. Cada um cria a sua branch
 
-# Membro A
+# Membro A Luis
 git checkout -b feature/uc05-medidas
 
-# Membro B
+# Membro B Tomas
 git checkout -b feature/uc06-planos
 
-# Membro C
+# Membro C Rodrigo
 git checkout -b feature/uc07-treino
 3. O que cada um implementa
 O padrão é sempre o mesmo: Service → Controller → Templates
